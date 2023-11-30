@@ -1,6 +1,6 @@
 ---
 name: 新需求
-about: 提交一个你对Paddle的新需求
+about: 提交一个你对4DPocket的新需求
 title: ''
 labels: ''
 assignees: ''
