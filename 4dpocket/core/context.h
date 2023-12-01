@@ -15,14 +15,7 @@ public:
     // 获取一个实例
     // T& ctx = singletonContext::getInstance();
 private:
-    singletonContext() {};
+    singletonContext(){};
 };
 
-
-
-
-
-
-}
-
-
+}  // namespace pocket

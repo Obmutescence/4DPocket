@@ -1,11 +1,11 @@
 #pragma once
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <iomanip>
-#include <string>
 #include <ctime>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 namespace pocket {
 namespace simlog {
@@ -19,6 +19,7 @@ private:
     LogLevel currentLogLevel;
 
     std::string getTimeStamp();
+
 public:
     Logger(const std::string& filename, LogLevel level = LogLevel::INFO);
     ~Logger();
@@ -27,6 +28,5 @@ public:
     void log(const std::string& message);
 };
 
-};
-};
-
+};  // namespace simlog
+};  // namespace pocket

@@ -6,12 +6,12 @@ namespace simlog {
 std::string Logger::getTimeStamp() {
     std::time_t now = std::time(nullptr);
     char buffer[80];
-    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
+    std::strftime(
+        buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
     return std::string(buffer);
 }
 
-
-Logger::Logger(const std::string& filename, LogLevel level){
+Logger::Logger(const std::string& filename, LogLevel level) {
     logFile.open(filename, std::ios_base::app);
     currentLogLevel = level;
 }
@@ -22,15 +22,12 @@ Logger::~Logger() {
     }
 }
 
-void Logger::setLogLevel(LogLevel level) {
-    currentLogLevel = level;
-}
+void Logger::setLogLevel(LogLevel level) { currentLogLevel = level; }
 
 void Logger::log(const std::string& message) {
-
     std::ostringstream logStream;
     logStream << "[" << getTimeStamp() << "] ";
-    
+
     switch (currentLogLevel) {
         case LogLevel::DEBUG:
             logStream << "[DEBUG] ";
@@ -53,15 +50,14 @@ void Logger::log(const std::string& message) {
     }
     logStream << message << std::endl;
 
-    std::cout << logStream.str(); // Output to console
+    std::cout << logStream.str();  // Output to console
     if (logFile.is_open()) {
-        logFile << logStream.str(); // Output to file
+        logFile << logStream.str();  // Output to file
     }
 }
 
-
-};
-};
+};  // namespace simlog
+};  // namespace pocket
 
 // int main() {
 //     using namespace pocket::simlog;
@@ -69,4 +65,3 @@ void Logger::log(const std::string& message) {
 //     log1.log("dadas");
 //     return 0;
 // }
-
