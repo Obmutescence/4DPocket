@@ -45,7 +45,7 @@
 
 
 <!-- 筱 的 logo -->
-<img alt="Xiao" src="asserts/Doraemon.jpg" width="50%"> </img>
+<img alt="Xiao" src="docs/asserts/Doraemon.jpg" width="50%"> </img>
 
 <i>Loved the project? Please consider forking the project to help it improve!</i>
 
