@@ -19,9 +19,15 @@ PYBIND11_MODULE(simlog, m) {
         .export_values();
 
     py::class_<Logger>(m, "Logger")
-        .def(py::init<const std::string&, LogLevel>())
-        .def("set_log_level", &Logger::setLogLevel)
-        .def("log", &Logger::log);
+        .def(py::init<const std::string&, LogLevel>(),
+             py::arg("filename"),
+             py::arg("level") = LogLevel::INFO)
+        .def("set_log_level", &Logger::setLogLevel, py::arg("level"))
+        .def("debug", &Logger::debug, py::arg("message"))
+        .def("info", &Logger::info, py::arg("message"))
+        .def("warning", &Logger::warning, py::arg("message"))
+        .def("error", &Logger::error, py::arg("message"))
+        .def("critical", &Logger::critical, py::arg("message"));
 }
 
 };  // namespace simlog

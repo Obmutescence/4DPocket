@@ -21,11 +21,15 @@ private:
     std::string getTimeStamp();
 
 public:
-    Logger(const std::string& filename, LogLevel level = LogLevel::INFO);
+    Logger(const std::string &filename, LogLevel level = LogLevel::INFO);
     ~Logger();
-
     void setLogLevel(LogLevel level);
-    void log(const std::string& message);
+
+    void debug(const std::string &message);
+    void info(const std::string &message);
+    void warning(const std::string &message);
+    void error(const std::string &message);
+    void critical(const std::string &message);
 };
 
 };  // namespace simlog
