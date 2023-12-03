@@ -1,16 +1,17 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-// #include "../../apps/simlog/log.h"
-#include "../../apps/simlog/log.cpp"
+#include "4dpocket/apps/simlog/log.h"
+#include "4dpocket/pybind/simlog/py_simlog.h"
 
 namespace pocket {
-namespace simlog {
+namespace pybind {
 
-namespace py = pybind11;
+void build_simlog(py::module *m) {
+    // 子模块
+    py::module m_simlog = m->def_submodule("simlog", "simlog");
 
-PYBIND11_MODULE(simlog, m) {
-    py::enum_<LogLevel>(m, "LogLevel")
+    py::enum_<LogLevel>(m_simlog, "LogLevel")
         .value("DEBUG", LogLevel::DEBUG)
         .value("INFO", LogLevel::INFO)
         .value("WARNING", LogLevel::WARNING)
@@ -18,7 +19,7 @@ PYBIND11_MODULE(simlog, m) {
         .value("CRITICAL", LogLevel::CRITICAL)
         .export_values();
 
-    py::class_<Logger>(m, "Logger")
+    py::class_<Logger>(m_simlog, "Logger")
         .def(py::init<const std::string&, LogLevel>(),
              py::arg("filename"),
              py::arg("level") = LogLevel::INFO)
@@ -30,5 +31,5 @@ PYBIND11_MODULE(simlog, m) {
         .def("critical", &Logger::critical, py::arg("message"));
 }
 
-};  // namespace simlog
+};  // namespace pybind
 };  // namespace pocket

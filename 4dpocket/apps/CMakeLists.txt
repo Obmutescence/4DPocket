@@ -1,4 +1,5 @@
 set(csrc simlog/log.cpp
-         simlog/log.h)
+)
+include_directories(${CMAKE_CURRENT_LIST_DIR})
 
-add_library(apps ${csrc})
+add_library(apps SHARED ${csrc})

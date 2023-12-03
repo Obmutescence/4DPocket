@@ -1,3 +1,5 @@
-set(csrc context.cpp context.h)
+set(csrc context.cpp)
 
-add_library(core ${csrc})
+include_directories(${CMAKE_CURRENT_LIST_DIR})
+
+add_library(core SHARED ${csrc})
